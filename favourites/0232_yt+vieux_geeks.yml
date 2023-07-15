@@ -1,0 +1,7 @@
+---
+name: Vieux Geeks
+thumb: vieux_geeks
+action:
+  type: youtube_channel
+  value: UCeMT9tun1lMbHOF7jsFNnZQ
+  _path: playlists

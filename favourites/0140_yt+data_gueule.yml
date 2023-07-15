@@ -1,0 +1,8 @@
+---
+name: Data Gueule
+thumb: data_gueule
+action:
+  type: youtube_channel
+  value: UCm5wThREh298TkK8hCT9HuA
+  _path: playlists
+hidden: true

@@ -1,0 +1,7 @@
+---
+name: G&amp;P TV, L'actualité des Jeux
+thumb: guerre-plomb
+action:
+  type: youtube_channel
+  value: UCR79KOPnH4YvBi-jfBvY27Q
+  _path: playlists

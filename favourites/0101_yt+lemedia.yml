@@ -1,0 +1,7 @@
+---
+name: Le Média
+thumb: le+media
+action:
+  type: youtube_channel
+  value: UCT67YOMntJxfRnO_9bXDpvw
+  _path: playlists

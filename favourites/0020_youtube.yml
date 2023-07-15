@@ -1,0 +1,6 @@
+---
+name: YouTube
+thumb: youtube
+action:
+  type: activate_window
+  value: plugin://plugin.video.youtube/kodion/search/list/

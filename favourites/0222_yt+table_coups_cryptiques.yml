@@ -1,0 +1,7 @@
+---
+name: La Table des Coups Cryptiques
+thumb: table_coups_cryptiques
+action:
+  type: youtube_channel
+  value: UCrLLT0eGlIrtexsj3IEEq3g
+  _path: playlists

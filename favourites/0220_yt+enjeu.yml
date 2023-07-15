@@ -1,0 +1,7 @@
+---
+name: En jeu !
+thumb: enjeu
+action:
+  type: youtube_channel
+  value: UCLtMV3F-kdT86p43GiBXbJA
+  _path: playlists
