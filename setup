@@ -15,7 +15,7 @@ autoload(:FileUtils, 'fileutils')
 # Main process
 class App
   def call
-    Pathname.new(__FILE__).realpath.dirname.join('..').realpath.then do |path|
+    Pathname.new(__FILE__).realpath.dirname.realpath.then do |path|
       Dir.chdir(path) do
         # process
         Pathname.new('ruby').expand_path.join(lib_name).tap do |lib_dir|

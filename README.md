@@ -7,7 +7,7 @@ This repository is intended to show off an example for a [``kodi_fav_gen``][Swag
 Setup (or update) from stable branches:
 
 ```shell
-ruby bin/setup.rb
+ruby setup
 ```
 
 Setup (or update) from ``develop`` branches (with verbose ``git``):
@@ -16,13 +16,13 @@ Setup (or update) from ``develop`` branches (with verbose ``git``):
 KODI_FAVGEN__CODE_BRANCH='develop' \
 KODI_FAVGEN__FAVS_BRANCH='develop' \
 KODI_FAVGEN__VCS_VERBOSE='true' \
-ruby bin/setup.rb
+ruby setup
 ```
 
 ## Execute
 
 ```shell
-ruby bin/kodi-favgen output='/dev/stdout' files-path='/mnt/storage/files'
+bin/kodi-favgen output='/dev/stdout' files-path='/mnt/storage/files'
 ```
 
 Where `files-path` is used to define a custom variable used in an ``yml.erb`` favourite file.
