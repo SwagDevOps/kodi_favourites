@@ -1,0 +1,11 @@
+*.gem
+*.swp
+*~
+/**/.*
+/cache/
+/doc/
+/ruby/
+!/.gitignore
+!/.rspec
+!/.rubocop.yml
+!/.yardopts
