@@ -1,6 +1,6 @@
 ---
 name: Arte (FR)
-thumb: arte-512
+thumb: arte
 action:
   type: activate_window
   value: |
