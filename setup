@@ -3,12 +3,11 @@
 
 # Constants
 ENV_PREFIX = 'KODI_FAVGEN_'
-CODE_REPO = 'https://github.com/SwagDevOps/kodi_fav_gen.git'
-CODE_BRANCH = (ENV["#{ENV_PREFIX}_CODE_BRANCH"] ||= 'master').freeze
-FAVS_REPO = 'https://github.com/SwagDevOps/kodi_favourites.git'
-FAVS_BRANCH = (ENV["#{ENV_PREFIX}_FAVS_BRANCH"] ||= 'master').freeze
+LIB_REPO = 'https://github.com/SwagDevOps/kodi_fav_gen.git'
+UPGRADE_BRANCH = (ENV["#{ENV_PREFIX}_UPGRADE_BRANCH"] ||= 'master').freeze
+UPDATE_BRANCH = (ENV["#{ENV_PREFIX}_UPDATE_BRANCH"] ||= 'master').freeze
 
-# Dependencies
+# Dependencies (Ruby Core)
 autoload(:Pathname, 'pathname')
 autoload(:FileUtils, 'fileutils')
 
@@ -20,12 +19,12 @@ class App
         # process
         Pathname.new('ruby').expand_path.join(lib_name).tap do |lib_dir|
           fs.mkdir_p(lib_dir.dirname)
-          (git.call('clone', CODE_REPO, lib_dir.to_path) unless lib_dir.directory?).then do
-            Dir.chdir(lib_dir.to_path) { git.update(branch: CODE_BRANCH) }
+          (git.call('clone', LIB_REPO, lib_dir.to_path) unless lib_dir.directory?).then do
+            Dir.chdir(lib_dir.to_path) { git.update(branch: UPGRADE_BRANCH) }
           end
         end
 
-        git.update(branch: FAVS_BRANCH)
+        git.update(branch: UPDATE_BRANCH)
       end
     end
   end
@@ -40,7 +39,7 @@ class App
 
   # @return [String]
   def lib_name
-    Pathname.new(CODE_REPO).basename('.git').to_s
+    Pathname.new(LIB_REPO).basename('.git').to_s
   end
 
   # @return [Module<FileUtils::Verbose>, Module<FileUtils>]
@@ -48,41 +47,86 @@ class App
     FileUtils::Verbose
   end
 
-  # @return [Module<Git>]
+  # @return [Git]
   def git
-    Git
+    Git.new
   end
 end
 
 # Simple wrapper built on top of git executable.
-module Git
-  class << self
-    # Call a command.
-    def call(*args, **opts)
-      {
-        exception: true,
-        verbose: verbose?,
-      }.each { |k, v| opts[k] = v unless opts.key?(k) }
-
-      ['git'].concat(args).concat([opts[:verbose] ? nil : '--quiet'].compact).then do |arguments|
-        system(*arguments, exception: opts[:exception])
+class Git
+  def initialize
+    self.tap do
+      (ENV["#{ENV_PREFIX}_VCS_VERBOSE"] ||= 'false').then do |v|
+        v == 'true' ? true : false
+      end.then do
+        @verbose = _1
       end
     end
+  end
 
-    # Force update (with clean) on current path.
-    def update(branch: 'main', **opts)
+  # Call a command.
+  #
+  # Sample of use:
+  #
+  # ```
+  # git.call('clone', repo_url, path, '--quiet', exception: true)
+  # git.call('clean', '--force')
+  # git.call('pull', '--quiet')
+  # ```
+  def call(*args, **opts)
+    opts = optionize(opts, exception: true)
+
+    ['git'].concat(args).then do |arguments|
+      system(*arguments, exception: opts[:exception])
+    end
+  end
+
+  # Force update (with clean) on current path.
+  #
+  # Sample of use:
+  #
+  # ```
+  # Dir.chdir(vcs_path) do
+  #   git.update(branch: 'master', quiet: true, exception: true)
+  # end
+  # ```
+  #
+  # @return [Boolean]
+  def update(branch: 'main', **opts)
+    opts = optionize(opts, exception: false, verbose: verbose?)
+
+    true.tap do
       [
         %w[clean --force],
         %w[pull],
-        ['checkout', branch]
-      ].each { |args| self.(*args, **opts) }
-    end
-
-    # Denote git is set in verbose mode (from env).
-    def verbose?
-      (ENV["#{ENV_PREFIX}_VCS_VERBOSE"] ||= 'false').then do |v|
-        v == 'true' ? true : false
+        ['checkout', branch.to_s]
+      ].map do |args|
+        args.concat([opts[:verbose] ? nil : '--quiet'].compact)
+      end.each do |args|
+        self.(*args, **opts).tap { return false unless _1 }
       end
+    end
+  end
+
+  # Denote git is set in verbose mode (from config).
+  #
+  # @return [Boolean]
+  def verbose?
+    @verbose
+  end
+
+  protected
+
+  # @return [Boolean]
+  attr_reader :verbose
+
+  # @param [Hash{Symbol => Object}] opts
+  #
+  # @return [Hash{Symbol => Object}]
+  def optionize(opts, **defaults)
+    opts.tap do
+      defaults.each { |k, v| opts[k] = v unless opts.key?(k) }
     end
   end
 end

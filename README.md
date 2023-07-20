@@ -13,8 +13,8 @@ ruby setup
 Setup (or update) from ``develop`` branches (with verbose ``git``):
 
 ```shell
-KODI_FAVGEN__CODE_BRANCH='develop' \
-KODI_FAVGEN__FAVS_BRANCH='develop' \
+KODI_FAVGEN__UPGRADE_BRANCH='develop' \
+KODI_FAVGEN__UPDATE_BRANCH='develop' \
 KODI_FAVGEN__VCS_VERBOSE='true' \
 ruby setup
 ```
