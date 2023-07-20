@@ -10,14 +10,14 @@ Setup (or update) from stable branches:
 ruby setup
 ```
 
-Setup (or update) from ``develop`` branches (with verbose ``git``):
+Setup (or update) from ``develop`` branches:
 
 ```shell
-KODI_FAVGEN__UPGRADE_BRANCH='develop' \
-KODI_FAVGEN__UPDATE_BRANCH='develop' \
-KODI_FAVGEN__VCS_VERBOSE='true' \
-ruby setup
+ruby setup update-branch=develop upgrade-branch=develop 
 ```
+
+``update-branch`` is related to current project.\
+``upgrade-branch`` relates to [``kodi_fav_gen``][SwagDevOps/kodi_fav_gen].
 
 ## Execute
 

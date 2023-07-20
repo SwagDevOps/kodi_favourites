@@ -4,7 +4,7 @@
 /**/.*
 /cache/
 /doc/
-/ruby/
+/vendor/
 !/.gitignore
 !/.rspec
 !/.rubocop.yml
