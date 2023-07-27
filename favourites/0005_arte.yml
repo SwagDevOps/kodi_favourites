@@ -1,10 +1,8 @@
+# @see https://iwf1.com/kodi/plugin.video.tyl0re.arte
+# @see https://github.com/tjamieg/repository.kodinerds
 ---
 name: Arte (FR)
 thumb: arte
 action:
   type: activate_window
-  value: |
-    plugin://plugin.video.catchuptvandmore/resources/lib/channels/wo/arte/list_categories/
-    ?_pickle_=80059599000000000000007d94288c075f7469746c655f948c155265706c6179205456202d20417274652028465229948c076974656d
-    5f6964948c0461727465948c0b69735f706c617961626c6594898c0969735f666f6c64657294888c056f72646572944b028c0866726f6d5f666176
-    94888c096974656d5f68617368948c20663630326264326562353635363334336166646263636639383736343631333694752e
+  value: plugin://plugin.video.tyl0re.arte
