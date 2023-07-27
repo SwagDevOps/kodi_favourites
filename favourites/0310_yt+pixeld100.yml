@@ -1,0 +1,7 @@
+---
+name: PixelD100
+thumb: yt-pixeld100
+action:
+  type: youtube_channel
+  value: UCEokvcPS7dNJqG6kz2loTKQ
+  _path: playlists
