@@ -1,0 +1,8 @@
+# @see https://iwf1.com/kodi/plugin.video.tyl0re.arte
+# @see https://github.com/tjamieg/repository.kodinerds
+---
+name: Arte (FR)
+thumb: arte
+action:
+  type: activate_window
+  value: plugin://plugin.video.tyl0re.arte

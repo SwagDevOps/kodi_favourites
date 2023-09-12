@@ -1,0 +1,7 @@
+---
+name: Les imagitateurs du JDR
+thumb: yt-imagitateurs
+action:
+  type: youtube_channel
+  value: UCfugznJG9IYjJB9pWC_e0FA
+  _path: playlists

@@ -1,0 +1,6 @@
+---
+name: France 2
+thumb: france2
+action:
+  type: activate_window
+  value: plugin://plugin.video.francetv/?mode=collection&amp;path=apps%2fchannels%2ffrance-2

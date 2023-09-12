@@ -1,0 +1,7 @@
+---
+name: Le Fil d&apos;Actu
+thumb: le_fil_dactu
+action:
+  type: youtube_channel
+  value: UC9hHeywcPBnLglqnQRaNShQ
+  _path: playlists

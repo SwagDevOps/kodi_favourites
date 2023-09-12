@@ -1,0 +1,7 @@
+---
+name: Le bon MJ
+thumb: bonmj
+action:
+  type: youtube_channel
+  value: UCsYsBPwucinBZUBUAbAyURg
+  _path: playlists

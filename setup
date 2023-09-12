@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative('lib/setup')
+
+# Execution
+if __FILE__ == $0
+  autoload(:Pathname, 'pathname')
+
+  Pathname.new(__FILE__).realpath.dirname.realpath.then do |current_dir|
+    Dir.chdir(current_dir) { Setup.call(ARGV) }
+  end
+end

@@ -1,0 +1,7 @@
+---
+name: Coup Critique
+thumb: coup_critique
+action:
+  type: youtube_channel
+  value: UCWjzXwP-19vw7MTPnXXkgYA
+  _path: playlists

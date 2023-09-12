@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+autoload(:Pathname, 'pathname')
+
+Pathname.new(__FILE__).realpath.dirname.join('..').realpath.then do |path|
+  # noinspection RubyLiteralArrayInspection
+  {
+    Setup: 'lib/setup',
+    KodiFavGen: 'vendor/setup/kodi_fav_gen/lib/kodi_fav_gen',
+  }.each do |k, v|
+    autoload(k, "#{path}/#{v}")
+  end
+
+  {
+    path: path.join('favourites').realpath.to_s,
+    tmpdir: path.join('cache').expand_path.to_s,
+    update_branch: ::Setup::UPDATE_BRANCH,
+    update_path: path.to_path,
+    upgrade_path: Pathname.new(path).join(::Setup::UPGRADE_PATH.to_s),
+    upgrade_branch: ::Setup::UPGRADE_BRANCH,
+  }.tap { KodiFavGen::App.call(ARGV, _1) }
+end

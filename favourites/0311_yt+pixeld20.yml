@@ -1,0 +1,7 @@
+---
+name: PixelD20
+thumb: yt-pixeld20
+action:
+  type: youtube_channel
+  value: UCtThWUjDdXURHNNR9MXSHYQ
+  _path: playlists

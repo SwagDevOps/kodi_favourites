@@ -1,0 +1,7 @@
+---
+name: Rôliste TV
+thumb: roliste_tv
+action:
+  type: youtube_channel
+  value: UCbM4Z7OzdBTip4fvMHvwG6A
+  _path: playlists
