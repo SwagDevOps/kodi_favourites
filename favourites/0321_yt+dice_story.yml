@@ -1,0 +1,7 @@
+---
+name: Dice Story
+thumb: yt+dice_story
+action:
+  type: youtube_channel
+  value: UC9Hpm8A0D6U4kiUdg6t6Jww
+  _path: playlists
