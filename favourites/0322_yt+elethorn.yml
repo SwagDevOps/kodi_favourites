@@ -1,0 +1,7 @@
+---
+name: Elethorn
+thumb: yt+elethorn
+action:
+  type: youtube_channel
+  value: UCMEkpGAc4TEkQEiPTKbzCEQ
+  _path: playlists
