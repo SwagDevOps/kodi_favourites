@@ -5,4 +5,4 @@ name: Arte (FR)
 thumb: arte
 action:
   type: activate_window
-  value: plugin://plugin.video.tyl0re.arte
+  value: 'plugin://plugin.video.catchuptvandmore/resources/lib/channels/wo/arte/list_categories/?_pickle_=8004952c000000000000007d94288c075f7469746c655f948c09417274652028465229948c076974656d5f6964948c046172746594752e'
